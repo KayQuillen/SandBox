@@ -29,29 +29,47 @@
 #     report_age("Smudge", 6)
 
     class Dog
-        def make_up_name
-            @name = "Sandie"
-        end
-        def talk
-            puts "#{@name} says bark"
-        end
+       attr_reader :name, :age
 
-        def move(destination)
-            puts "#{name} is running to the #{destination}"
+       def name=(value)
+        if value == ""
+            raise "Name can't be blank!"
         end
-        def make_up_age
-            @age = 5
-        end
-        def report_age
-            puts "#{@name} is #{@age} years old"
+        @name = value
     end
 
+       def age=(value)
+        if value < 0
+            raise "An age of #{value} is not valid!"
+        end
+        @age = value
+    end
+
+        def report_age
+            puts "#{@name} is #{@age} years old."
+       end
+
+       def talk
+            puts "#{@name} says bark!"
+       end
+
+       def move(destination)
+            puts "#{@name} runs to the #{destination}."
+       end
+    end
+=begin
     class Bird
         def talk(name)
             puts "chirp, chirp"
         end
         def move(destination)
             puts "Flying to the #{destination}"
+        end
+        def make_up_age
+            @age = 5
+        end
+        def report_age
+            puts "#{@name} is #{@age} years old"
         end
     end
 
@@ -62,13 +80,26 @@
         def move(destination)
             puts "Running to the #{destination}"
         end
+        def make_up_age
+            @age = 5
+        end
+        def report_age
+            puts "#{@name} is #{@age} years old"
+        end
     end
-    bird = Bird.new
-    cat = Cat.new
-    dog = Dog.new
-    my_first_dog = Dog.new
-    my_first_dog.move("park")
-bird.move("tree")
-dog.talk 
-bird.talk
-cat.move("house")
+=end  
+
+# fido = Dog.new
+# fido.name = "fido"
+# fido.age = 3
+# Rex = Dog.new
+# Rex.name = "Rex"
+# Rex.age = 2
+# fido.report_age
+# Rex.report_age
+dog = Dog.new
+dog.name = "Daisy"
+dog.age = 3
+dog.report_age
+dog.talk
+dog.move("bed")
